@@ -1,0 +1,30 @@
+{
+  "name": "javascript-2-ca",
+  "version": "1.0.0",
+  "description": "This is my course assignment for the course Javascript 2 at Noroff vocational school.",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server",
+    "dev": "npm-run-all --parallel watch start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bjonne696/Javascript-2-CA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bjonne696/Javascript-2-CA/issues"
+  },
+  "homepage": "https://github.com/Bjonne696/Javascript-2-CA#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.69.5"
+  }
+}

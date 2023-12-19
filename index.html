@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- CSS file link -->
 </head>
 <body>
-    <div id="postsContainer">
-        <!-- Posts will be dynamically inserted here -->
-        <!-- Example of a post structure -->
-        <div class="post">
-            <h3 class="postTitle">Post Title Here</h3>
-            <p class="postContent">Post content here...</p>
-            <!-- Add more elements edit, delete buttons etc -->
+    <div class="container">
+        <div id="postsContainer" class="row mt-5">
+            <!-- Posts will be dynamically inserted here -->
+            <!-- Example of a post structure -->
+            <div class="col-md-8 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Title Here</h5>
+                        <p class="card-text">Post content here...</p>
+                        <!-- Add more elements like edit, delete buttons as needed -->
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for each post -->
         </div>
-        <!-- Repeat for each post -->
     </div>
 </body>
 </html>
