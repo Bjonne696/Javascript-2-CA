@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const API_URL = 'https://api.noroff.dev/api/v1';
     const postsContainer = document.getElementById('postsContainer');
+    let allPosts = []; // To store all posts
 
     async function fetchAndDisplayPosts() {
         try {
@@ -15,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Network response was not ok: ' + response.statusText);
             }
 
-            const posts = await response.json();
-            displayPosts(posts);
+            allPosts = await response.json();
+            displayPosts(allPosts);
         } catch (error) {
             console.error('Fetch error:', error);
         }
@@ -24,16 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayPosts(posts) {
         postsContainer.innerHTML = ''; // Clear existing posts
-
+    
         posts.forEach(post => {
+            let tagsText = post.tags.join(', ');
             const postElement = document.createElement('div');
             postElement.className = 'col-md-8 mb-4';
-            postElement.id = 'post-' + post.id; // Assuming each post has a unique 'id'
+            postElement.id = 'post-' + post.id;
             postElement.innerHTML = `
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">${post.title}</h5>
                         <p class="card-text">${post.body}</p>
+                        <p class="card-text">${tagsText}</p>
                         <button class="btn btn-primary edit-post-btn" data-post-id="${post.id}">Edit</button>
                         <button class="btn btn-danger delete-post-btn" data-post-id="${post.id}">Delete</button>
                     </div>
@@ -42,6 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
             postsContainer.appendChild(postElement);
         });
     }
+
+    function filterPosts(searchText) {
+        return allPosts.filter(post => {
+            const tagsMatch = post.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()));
+            const titleMatch = post.title.toLowerCase().includes(searchText.toLowerCase());
+            return tagsMatch || titleMatch;
+        });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function(event) {
+        const searchText = event.target.value;
+        const filteredPosts = filterPosts(searchText);
+        displayPosts(filteredPosts);
+    });
 
     //delete function
 
