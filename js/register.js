@@ -67,3 +67,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+//errors are not handled gracefully

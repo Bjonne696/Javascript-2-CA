@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.classList.remove('d-none');
     }
 
-
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -39,10 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 let data = await response.json();
                 localStorage.setItem('userToken', data.accessToken);
                 displaySuccessMessage("Logged in successfully!");
+                
+
 
             } else {
                 const errorData = await response.json();
-                console.error(errorData);
+                console.error('Login Failed:', errorData);
                 displayErrorMessage('Error logging in. Please try again.');
             }
         } catch (error) {
@@ -51,3 +52,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 });
+//errors are not handled gracefully
