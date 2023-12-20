@@ -14,13 +14,13 @@
         <div id="postsContainer" class="row mt-5">
             <!-- Posts will be dynamically inserted here -->
             <!-- Example of a post structure -->
-            <div class="col-md-8 mb-4">
+            <div class="col-md-8 mb-4" id="post-{POST_ID}">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Post Title Here</h5>
-                        <p class="card-text">Post content here...</p>
-                        <p class="card-text">ID</p>
-                        <!-- Add more elements like edit, delete buttons as needed -->
+                        <h5 class="card-title">{Post Title}</h5>
+                        <p class="card-text">{Post Content}</p>
+                        <button class="btn btn-primary edit-post-btn" data-post-id="{POST_ID}">Edit</button>
+                        <button class="btn btn-danger delete-post-btn" data-post-id="{POST_ID}">Delete</button>
                     </div>
                 </div>
             </div>

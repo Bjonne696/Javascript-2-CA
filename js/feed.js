@@ -28,13 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
         posts.forEach(post => {
             const postElement = document.createElement('div');
             postElement.className = 'col-md-8 mb-4';
+            postElement.id = 'post-' + post.id; // Assuming each post has a unique 'id'
             postElement.innerHTML = `
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">${post.title}</h5>
                         <p class="card-text">${post.body}</p>
-                        <p class="card-text">${post.id}</p>
-                        <!-- Add more elements like edit, delete buttons as needed -->
+                        <button class="btn btn-primary edit-post-btn" data-post-id="${post.id}">Edit</button>
+                        <button class="btn btn-danger delete-post-btn" data-post-id="${post.id}">Delete</button>
                     </div>
                 </div>
             `;
@@ -42,6 +43,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //delete function
+
+    postsContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('delete-post-btn')) {
+            const postId = event.target.getAttribute('data-post-id');
+            deletePost(postId);
+        }
+    });
+
+    async function deletePost(postId) {
+        try {
+            const response = await fetch(`${API_URL}/social/posts/${postId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('userToken')
+                }
+            });
+
+            if (response.ok) {
+                document.getElementById('post-' + postId).remove();
+                console.log('Post deleted successfully');
+            } else {
+                console.error('Failed to delete post:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
+    }
+
+    //edit function
+
+    postsContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('edit-post-btn')) {
+            const postId = event.target.getAttribute('data-post-id');
+            window.location.href = `editPost.html?postId=${postId}`; // Assuming you have an editPost.html
+        }
+    });
+
+
     fetchAndDisplayPosts();
 });
+
 //errors are not handled gracefully
