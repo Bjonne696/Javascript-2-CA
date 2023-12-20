@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = document.getElementById('registerName').value;
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
 
         if (!/^[\w]{1,20}$/.test(name)) {
             displayErrorMessage('Invalid name. Name can only contain alphanumeric characters and underscores, and it must be less than 21 characters.');
