@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const API_URL = 'https://api.noroff.dev/api/v1';
     const postsContainer = document.getElementById('postsContainer');
-    let allPosts = []; // To store all posts
+    const filterSelect = document.getElementById('postFilter'); // Get the filter dropdown
+    let allPosts = [];
 
     async function fetchAndDisplayPosts() {
         try {
@@ -11,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Authorization': 'Bearer ' + localStorage.getItem('userToken')
                 }
             });
+
+
+            
 
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);
@@ -24,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayPosts(posts) {
-        postsContainer.innerHTML = ''; // Clear existing posts
-    
+        postsContainer.innerHTML = '';
         posts.forEach(post => {
             let tagsText = post.tags.join(', ');
             const postElement = document.createElement('div');
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.innerHTML = `
                 <div class="card">
                     <div class="card-body">
+                        <div class="post-id">Post ID: ${post.id}</div> <!-- Displaying Post ID -->
                         <h5 class="card-title">${post.title}</h5>
                         <p class="card-text">${post.body}</p>
                         <p class="card-text">${tagsText}</p>
@@ -46,26 +50,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function filterPosts(searchText) {
-        return allPosts.filter(post => {
-            const tagsMatch = post.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()));
-            const titleMatch = post.title.toLowerCase().includes(searchText.toLowerCase());
-            return tagsMatch || titleMatch;
-        });
-    }
+    const searchInput = document.getElementById('searchInput');
 
-    document.getElementById('searchInput').addEventListener('input', function(event) {
-        const searchText = event.target.value;
-        const filteredPosts = filterPosts(searchText);
+    searchInput.addEventListener('input', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredPosts = allPosts.filter(post => 
+            post.title.toLowerCase().includes(searchTerm) || 
+            post.body.toLowerCase().includes(searchTerm) || 
+            (post.tags && post.tags.join(' ').toLowerCase().includes(searchTerm))
+        );
         displayPosts(filteredPosts);
     });
 
-    //delete function
+
+    function filterPosts(filterType) {
+        switch (filterType) {
+            case 'withTags':
+                return allPosts.filter(post => post.tags.length > 0);
+            case 'withoutTags':
+                return allPosts.filter(post => post.tags.length === 0);
+            default:
+                return allPosts;
+        }
+    }
+
+    filterSelect.addEventListener('change', function(event) {
+        const filterType = event.target.value;
+        const filteredPosts = filterPosts(filterType);
+        displayPosts(filteredPosts);
+    });
 
     postsContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('delete-post-btn')) {
             const postId = event.target.getAttribute('data-post-id');
             deletePost(postId);
+        } else if (event.target.classList.contains('edit-post-btn')) {
+            const postId = event.target.getAttribute('data-post-id');
+            window.location.href = `pages/editPost.html?postId=${postId}`;
         }
     });
 
@@ -89,17 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    //edit function
-
-    postsContainer.addEventListener('click', function(event) {
-        if (event.target.classList.contains('edit-post-btn')) {
-            const postId = event.target.getAttribute('data-post-id');
-            window.location.href = `pages/editPost.html?postId=${postId}`; // Assuming you have an editPost.html
-        }
-    });
-
-
     fetchAndDisplayPosts();
 });
+
 
 //errors are not handled gracefully
