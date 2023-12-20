@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">${post.title}</h5>
-                        <p class="card-text">${post.content}</p>
+                        <p class="card-text">${post.body}</p>
+                        <p class="card-text">${post.id}</p>
                         <!-- Add more elements like edit, delete buttons as needed -->
                     </div>
                 </div>
