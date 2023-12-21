@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const title = document.getElementById('postTitle').value;
         const body = document.getElementById('postContent').value;
+        const tagsInput = document.getElementById('postTags').value;
+        const tags = tagsInput.split(',').map(tag => tag.trim()); // Split tags by comma and trim whitespace
 
         try {
             const response = await fetch(`${API_URL}/social/posts`, {
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('userToken') // Assuming JWT token is stored in local storage
                 },
-                body: JSON.stringify({ title, body })
+                body: JSON.stringify({ title, body, tags })
             });
 
             if (response.ok) {

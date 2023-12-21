@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const editPostForm = document.getElementById('editPostForm');
     const titleInput = document.getElementById('editPostTitle');
     const contentInput = document.getElementById('editPostContent');
+    const tagsInput = document.getElementById('editPostTags');
 
     // Extract postId from URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -30,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const post = await response.json();
             titleInput.value = post.title;
-            contentInput.value = post.body; // Using 'body' as per your API response
+            contentInput.value = post.body;
+            tagsInput.value = post.tags.join(', '); // Display the tags
         } catch (error) {
             console.error('Error:', error);
         }
@@ -39,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update post on form submit
     editPostForm.addEventListener('submit', async function(event) {
         event.preventDefault();
+
+        const tags = tagsInput.value.split(',').map(tag => tag.trim()); // Process the tags
 
         try {
             const response = await fetch(`${API_URL}/social/posts/${postId}`, {
@@ -49,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     title: titleInput.value,
-                    body: contentInput.value // Using 'body' as per your API
+                    body: contentInput.value,
+                    tags: tags // Include tags in the update
                 })
             });
 
