@@ -74,22 +74,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-async function deletePost(postId) {
-    try {
-        const response = await fetch(`${API_URL}/social/posts/${postId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('userToken')
-            }
-        });
-
-        if (response.ok) {
-            document.getElementById('post-' + postId).remove();
-            console.log('Post deleted successfully');
-        } else {
-            console.error('Failed to delete post:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error deleting post:', error);
-    }
-}

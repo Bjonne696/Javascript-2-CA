@@ -1,6 +1,9 @@
+// src/js/notifyLogout.js
+
+import { getUrlParameter } from './urlParams.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const logoutSuccess = urlParams.get('logout');
+    const logoutSuccess = getUrlParameter('logout');
     const loginMessageDiv = document.getElementById('loginMessage');
 
     if (logoutSuccess === 'success') {
