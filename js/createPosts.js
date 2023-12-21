@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         const title = document.getElementById('postTitle').value;
-        const content = document.getElementById('postContent').value;
+        const body = document.getElementById('postContent').value;
 
         try {
             const response = await fetch(`${API_URL}/social/posts`, {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('userToken') // Assuming JWT token is stored in local storage
                 },
-                body: JSON.stringify({ title, content })
+                body: JSON.stringify({ title, body })
             });
 
             if (response.ok) {
@@ -30,4 +30,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-//not tested
