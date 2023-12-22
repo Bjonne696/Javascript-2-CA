@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Posts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- CSS file link -->
+    <link rel="stylesheet" href="dist/css/styles.css">
 </head>
 <body>
+        <!-- Header Section -->
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-light navbar-bg-color">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Javascript 2 CA</span>
+                    <div class="d-flex">
+                        <a href="pages/register.html" class="btn btn-primary me-2" id="registerButton">Register</a>
+                        <a href="pages/login.html" class="btn btn-primary me-2" id="loginButton">Login</a>
+                        <button id="logoutButton" class="btn btn-warning" style="display:none;">Logout</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
     <div class="container">
         <div class="row mt-4">
             <div class="col-md-4">
@@ -23,9 +36,9 @@
                 </select>
             </div>
         </div>
-        <a href="pages/register.html" class="btn btn-primary mt-4">Register</a>
+
         <a href="pages/posts.html" class="btn btn-primary mt-4">Create Post</a>
-        <button id="logoutButton" class="btn btn-warning">Logout</button>
+
         <div id="postsContainer" class="row mt-5">
             <!-- Posts will be dynamically inserted here -->
         </div>

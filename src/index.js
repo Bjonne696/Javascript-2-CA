@@ -1,5 +1,4 @@
 // src/index.js
-
 import { API_URL, fetchPost } from './api/api.js';
 import { getFromLocalStorage } from './utils/utils.js';
 import { displayPosts } from './js/postOperations.js';
@@ -9,8 +8,35 @@ import { filterPosts } from './js/filterPostModule.js';
 document.addEventListener('DOMContentLoaded', function() {
     const postsContainer = document.getElementById('postsContainer');
     const filterSelect = document.getElementById('postFilter');
+    const searchInput = document.getElementById('searchInput');
+    const registerButton = document.querySelector('a[href="pages/register.html"]');
+    const loginButton = document.querySelector('a[href="pages/login.html"]');
+    const logoutButton = document.getElementById('logoutButton');
+    const createPostButton = document.querySelector('a[href="pages/posts.html"]');
     let allPosts = [];
 
+    // Function to toggle visibility based on login status
+    function toggleVisibility() {
+        const isLoggedIn = getFromLocalStorage('userToken');
+        if (isLoggedIn) {
+            registerButton.style.display = 'none';
+            loginButton.style.display = 'none';
+            logoutButton.style.display = 'inline-block';
+            createPostButton.style.display = 'inline-block';
+            postsContainer.style.display = 'block';
+            filterSelect.style.display = 'block';
+            searchInput.style.display = 'block';
+        } else {
+            registerButton.style.display = 'inline-block';
+            loginButton.style.display = 'inline-block';
+            logoutButton.style.display = 'none';
+            createPostButton.style.display = 'none';
+            postsContainer.style.display = 'none';
+            filterSelect.style.display = 'none';
+            searchInput.style.display = 'none';
+        }
+    }
+    
     async function fetchAndDisplayPosts() {
         try {
             const token = getFromLocalStorage('userToken');
@@ -26,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Fetch error:', error);
         }
     }
-
-    const searchInput = document.getElementById('searchInput');
 
     searchInput.addEventListener('input', function() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -48,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    toggleVisibility(); // Call this to set the initial visibility state
     fetchAndDisplayPosts();
 });
-
 //errors are not handled gracefully

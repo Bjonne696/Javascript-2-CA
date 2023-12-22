@@ -1,0 +1,28 @@
+@import '_variables';
+
+.navbar {
+  background-color: $navbar-bg-color;
+}
+
+body {
+    background-color: $background-color;
+  }
+
+.card {
+  background-color: $card-bg;
+}
+
+.card-title {
+  color: $primary-color;
+  text-shadow: $text-shadow;
+}
+
+.card-text {
+  color: $secondary-color;
+  text-shadow: $text-shadow;
+}
+
+.navbar-brand {
+  color: $primary-color;
+  text-shadow: $text-shadow;
+}

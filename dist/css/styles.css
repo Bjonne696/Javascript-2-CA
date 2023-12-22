@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #84aec2;
+}
+
+body {
+  background-color: #AFCCDA;
+}
+
+.card {
+  background-color: #6471a3;
+}
+
+.card-title {
+  color: #a2c47d;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-text {
+  color: #f3c323;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+  color: #a2c47d;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/*# sourceMappingURL=styles.css.map */
