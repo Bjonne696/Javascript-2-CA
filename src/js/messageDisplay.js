@@ -1,4 +1,4 @@
-// src/js/messageDisplay.js
+
 
 export function displaySuccessMessage(message) {
     const successDiv = document.getElementById('successMessage');

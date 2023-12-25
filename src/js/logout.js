@@ -1,4 +1,4 @@
-// src/js/logout.js
+
 
 import { logoutUser } from './logoutHandler.js';
 

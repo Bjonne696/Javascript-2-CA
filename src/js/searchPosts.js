@@ -1,4 +1,4 @@
-// src/js/searchPosts.js
+
 
 export function searchPosts(allPosts, searchTerm) {
     return allPosts.filter(post =>

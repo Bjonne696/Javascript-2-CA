@@ -1,4 +1,4 @@
-// src/index.js
+
 import { API_URL, fetchPost } from './api/api.js';
 import { getFromLocalStorage } from './utils/utils.js';
 import { displayPosts } from './js/postOperations.js';
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const createPostButton = document.querySelector('a[href="pages/posts.html"]');
     let allPosts = [];
 
-    // Function to toggle visibility based on login status
+
     function toggleVisibility() {
         const isLoggedIn = getFromLocalStorage('userToken');
         if (isLoggedIn) {
@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    toggleVisibility(); // Call this to set the initial visibility state
+    toggleVisibility(); 
     fetchAndDisplayPosts();
 });
-//errors are not handled gracefully

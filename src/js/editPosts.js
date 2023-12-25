@@ -1,4 +1,4 @@
-// src/js/editPosts.js
+
 
 import { fetchPostDetails, updatePost } from './postEditing.js';
 

@@ -1,4 +1,4 @@
-// createPosts.js
+
 
 import { createPost, API_URL } from '../api/api.js';
 import { getFromLocalStorage, setToLocalStorage } from '../utils/utils.js';
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await createPost({ title, body, tags }, token);
             if (response.ok) {
                 alert('Post created successfully!');
-                // Optionally redirect or clear the form
+             
             } else {
                 const errorData = await response.json();
                 alert('Failed to create post: ' + errorData.message);

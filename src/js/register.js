@@ -1,4 +1,4 @@
-// src/js/register.js
+
 
 import { registerUser } from './userRegistration.js';
 import { displaySuccessMessage, displayErrorMessage } from './messageDisplay.js';
@@ -37,4 +37,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//errors are not handled gracefully

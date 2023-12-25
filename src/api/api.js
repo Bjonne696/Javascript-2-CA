@@ -1,4 +1,4 @@
-// api.js
+
 
 export const API_URL = 'https://api.noroff.dev/api/v1';
 
@@ -24,4 +24,4 @@ export async function createPost(data, token) {
     return response;
 }
 
-// Other API functions as needed... also check endpoints for this if error
+
