@@ -1,4 +1,4 @@
-// src/js/filterPostsModule.js
+
 
 export function filterPosts(allPosts, filterType) {
     switch (filterType) {

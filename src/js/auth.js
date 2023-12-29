@@ -1,4 +1,4 @@
-// src/js/auth.js
+
 
 import { API_URL } from '../api/api.js';
 

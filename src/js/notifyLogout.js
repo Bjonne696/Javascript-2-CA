@@ -1,4 +1,4 @@
-// src/js/notifyLogout.js
+
 
 import { getUrlParameter } from './urlParams.js';
 

@@ -1,4 +1,4 @@
-// src/js/postEditing.js
+
 
 import { API_URL } from '../api/api.js';
 import { getFromLocalStorage } from '../utils/utils.js';
