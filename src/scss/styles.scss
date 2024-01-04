@@ -22,6 +22,10 @@
   text-shadow: $text-shadow;
 }
 
+.card-body {
+  color: $card-bg
+}
+
 .navbar-brand {
   color: $primary-color;
   text-shadow: $text-shadow;
