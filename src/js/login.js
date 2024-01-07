@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const data = await loginUser({ name, email, password });
             localStorage.setItem('userToken', data.accessToken);
+            localStorage.setItem('userEmail', email); 
             displaySuccessMessage("Logged in successfully!");
         } catch (error) {
             console.error('There was an error logging in:', error);
