@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../dist/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="postCreationForm" class="mt-5">
+                    <h2 class="mb-4">Create a Post</h2>
+                    <div class="form-group">
+                        <label for="postTitle">Title:</label>
+                        <input type="text" class="form-control" id="postTitle" name="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content:</label>
+                        <textarea class="form-control" id="postContent" name="postContent" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postTags">Tags:</label>
+                        <input type="text" class="form-control" id="postTags" name="postTags" placeholder="Enter tags separated by commas">
+                    </div>
+                    <a href="../index.html" class="btn btn-primary mt-4">Home</a>
+                    <button type="submit" class="btn btn-primary mt-4">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../src/js/createPosts.js"></script>
+</body>
+</html>
