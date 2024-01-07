@@ -1,13 +1,22 @@
-.navbar {
-  background-color: #84aec2;
+body {
+  background-color: #a2d6eb;
 }
 
-.body {
-  background-color: #AFCCDA;
+.btn-primary {
+  background-color: #a2c47d;
+  border: 1px solid #a2c47d;
+}
+.btn-primary:hover {
+  background-color: #89b45a;
+  border: 1px solid #a2c47d;
+}
+
+.navbar {
+  background-color: #62a9d8;
 }
 
 .card {
-  background-color: #2d3a9b;
+  background-color: #5f4e7a;
 }
 
 .card-title {
@@ -21,7 +30,7 @@
 }
 
 .card-body {
-  color: #2d3a9b;
+  color: #5f4e7a;
 }
 
 .navbar-brand {
